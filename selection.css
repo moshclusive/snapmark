@@ -1,0 +1,162 @@
+/* Snapmark - Precision Area Selection Overlay Styles (FireShot Inspired) */
+#snapmark-selection-container {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 2147483646 !important;
+  cursor: crosshair !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  pointer-events: auto;
+  box-sizing: border-box !important;
+  background: transparent !important;
+}
+
+/* 4-Mask System for clear cutout of selected region */
+.snapmark-dim-mask {
+  position: fixed !important;
+  background: rgba(0, 0, 0, 0.42) !important;
+  pointer-events: none !important;
+  z-index: 2147483645 !important;
+}
+
+/* Crosshair Hairline Guidelines across whole screen */
+.snapmark-crosshair-h {
+  position: fixed !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 1px !important;
+  background: repeating-linear-gradient(to right, #ffffff, #ffffff 4px, #222222 4px, #222222 8px) !important;
+  pointer-events: none !important;
+  z-index: 2147483647 !important;
+}
+
+.snapmark-crosshair-v {
+  position: fixed !important;
+  top: 0 !important;
+  height: 100vh !important;
+  width: 1px !important;
+  background: repeating-linear-gradient(to bottom, #ffffff, #ffffff 4px, #222222 4px, #222222 8px) !important;
+  pointer-events: none !important;
+  z-index: 2147483647 !important;
+}
+
+/* Selection outline box - crisp high contrast dashed lines without glowing stroke artifacts */
+#snapmark-selection-box {
+  position: fixed !important;
+  border: 1px dashed #ffffff !important;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.75) !important;
+  background: transparent !important;
+  z-index: 2147483647 !important;
+  pointer-events: none !important;
+  box-sizing: border-box !important;
+}
+
+/* Dimension Badge matching FireShot crisp dark pill */
+#snapmark-selection-badge {
+  position: fixed !important;
+  background: rgba(0, 0, 0, 0.88) !important;
+  color: #ffffff !important;
+  font-family: Tahoma, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  padding: 4px 8px !important;
+  border-radius: 4px !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+  pointer-events: none !important;
+  z-index: 2147483648 !important;
+  white-space: nowrap !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+#snapmark-selection-badge .square-tag {
+  background: #3b82f6 !important;
+  color: #fff !important;
+  padding: 1px 5px !important;
+  border-radius: 3px !important;
+  font-size: 10px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* Top Help Banner - Compact, discreet, and sleek */
+#snapmark-selection-hint {
+  position: fixed !important;
+  top: 12px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  background: rgba(18, 18, 24, 0.94) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  color: #e4e4e7 !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: 11.5px !important;
+  font-weight: 500 !important;
+  padding: 5px 14px !important;
+  border-radius: 20px !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.55) !important;
+  pointer-events: none !important;
+  z-index: 2147483648 !important;
+  white-space: nowrap !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+#snapmark-selection-hint kbd {
+  background: #27272a !important;
+  border: 1px solid #52525b !important;
+  color: #38bdf8 !important;
+  border-radius: 4px !important;
+  padding: 1px 6px !important;
+  font-size: 10.5px !important;
+  font-family: inherit !important;
+  font-weight: 700 !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* Snap Element Box Mode (when hovering with CTRL) */
+#snapmark-selection-box.snap-element-mode {
+  border: 2px solid #38bdf8 !important;
+  background: rgba(56, 189, 248, 0.1) !important;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6), 0 0 16px rgba(56, 189, 248, 0.25) !important;
+  transition: all 0.08s ease-out !important;
+}
+
+#snapmark-selection-badge .element-tag {
+  background: #0284c7 !important;
+  color: #ffffff !important;
+  padding: 1px 6px !important;
+  border-radius: 3px !important;
+  font-size: 11px !important;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace !important;
+  font-weight: 600 !important;
+}
+
+#snapmark-selection-badge .click-tag {
+  background: #16a34a !important;
+  color: #ffffff !important;
+  padding: 1px 6px !important;
+  border-radius: 3px !important;
+  font-size: 10.5px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.4px !important;
+}
+
+/* Zero Scrollbar Visibility While Selection is Active */
+html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+html, body, * {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}

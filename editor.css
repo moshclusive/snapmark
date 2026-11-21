@@ -1,0 +1,789 @@
+/* Snapmark Studio - Adobe Illustrator Dark Theme & Precision Editing Suite */
+:root {
+  --bg-app: #1e1e1e;
+  --bg-topbar: #2b2b2b;
+  --bg-toolbar: #262626;
+  --bg-tool-hover: #363636;
+  --bg-tool-active: #333333;
+  --bg-card: #2b2b2b;
+  --bg-canvas: #242424;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --border-accent: #6366f1;
+  --text-primary: #e4e4e7;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --accent-brand: #6366f1;
+  --accent-cyan: #38bdf8;
+  --ps-blue: #38bdf8;
+  --ps-bg: #001e36;
+  --radius-sm: 5px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* ==================== Top Application Bar (Adobe Illustrator Dark) ==================== */
+#topbar {
+  height: 48px;
+  width: 100%;
+  background: var(--bg-topbar);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  z-index: 100;
+  position: relative;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+
+#topbar-left, #topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.app-branding {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.app-logo {
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+}
+
+.app-title {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  background: linear-gradient(135deg, #818cf8, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.topbar-sep {
+  width: 1px;
+  height: 20px;
+  background: var(--border-subtle);
+  margin: 0 4px;
+}
+
+.doc-meta-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#doc-title-input {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  outline: none;
+  max-width: 260px;
+  transition: all 0.12s ease;
+  user-select: text;
+}
+
+#doc-title-input:hover, #doc-title-input:focus {
+  background: #363636;
+  border-color: var(--border-strong);
+}
+
+#doc-dimensions-badge {
+  font-size: 11px;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  color: var(--text-secondary);
+  background: #202020;
+  padding: 2px 7px;
+  border-radius: 4px;
+  border: 1px solid var(--border-subtle);
+}
+
+/* Topbar Buttons */
+.topbar-btn {
+  height: 32px;
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: #333333;
+  border: 1px solid #444444;
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.12s ease;
+  white-space: nowrap;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.topbar-btn:hover {
+  background: #3e3e3e;
+  border-color: #555555;
+  color: #ffffff;
+}
+
+.topbar-btn:active {
+  transform: translateY(1px);
+  background: #2a2a2a;
+}
+
+.btn-svg {
+  width: 15px;
+  height: 15px;
+  color: var(--text-secondary);
+  transition: color 0.12s ease;
+}
+
+.topbar-btn:hover .btn-svg {
+  color: #ffffff;
+}
+
+/* Photoshop Square Button (1:1 Ratio) */
+.topbar-btn.ps-square-btn {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  max-width: 32px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #001e36;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  aspect-ratio: 1 / 1;
+}
+
+.topbar-btn.ps-square-btn:hover {
+  border-color: #38bdf8;
+  background: #002b4d;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.35);
+}
+
+.ps-square-icon {
+  width: 22px;
+  height: 22px;
+  display: block;
+  pointer-events: none;
+}
+
+/* Save Image Primary Button (Snapmark Brand Purple) */
+.topbar-btn.primary-btn {
+  background: linear-gradient(135deg, #6366f1, #7c3aed);
+  border: none;
+  font-weight: 600;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4);
+}
+
+.topbar-btn.primary-btn:hover {
+  background: linear-gradient(135deg, #4f46e5, #6d28d9);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.55);
+}
+
+.topbar-btn.primary-btn .btn-svg {
+  color: #ffffff;
+}
+
+.caret-svg {
+  width: 12px;
+  height: 12px;
+  margin-left: -2px;
+}
+
+/* Dropdown Menu (Only PNG, JPG, PDF) */
+.dropdown-wrapper {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 5px;
+  background: #2b2b2b;
+  border: 1px solid #444444;
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65), 0 2px 6px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  padding: 4px;
+  min-width: 140px;
+  z-index: 200;
+}
+
+.dropdown-menu .menu-item {
+  background: transparent;
+  border: none;
+  padding: 8px 14px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.dropdown-menu .menu-item:hover {
+  background: #383838;
+  color: #818cf8;
+}
+
+/* Zoom Box */
+.zoom-box {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  background: #333333;
+  border: 1px solid #444444;
+  border-radius: var(--radius-sm);
+  padding: 0 2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.zoom-btn {
+  width: 26px;
+  height: 26px;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  cursor: pointer;
+  outline: none;
+}
+
+.zoom-btn:hover {
+  background: #424242;
+  color: #ffffff;
+}
+
+.zoom-btn svg {
+  width: 13px;
+  height: 13px;
+}
+
+#zoom-label {
+  font-size: 11px;
+  font-family: ui-monospace, monospace;
+  padding: 0 6px;
+  color: var(--text-primary);
+  cursor: pointer;
+  min-width: 44px;
+  text-align: center;
+}
+
+#zoom-label:hover {
+  color: #818cf8;
+}
+
+/* ==================== Left Tool Palette (Adobe Illustrator Dark Dock) ==================== */
+.adobe-toolbar {
+  position: fixed;
+  top: 60px;
+  left: 14px;
+  width: 46px;
+  background: var(--bg-toolbar);
+  border: 1px solid #383838;
+  border-radius: var(--radius-md);
+  padding: 6px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55), 0 2px 6px rgba(0, 0, 0, 0.35);
+  z-index: 90;
+  max-height: calc(100vh - 75px);
+  overflow-y: auto;
+}
+
+.adobe-toolbar::-webkit-scrollbar {
+  width: 3px;
+}
+.adobe-toolbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+}
+
+.tool-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: 100%;
+}
+
+.tool-divider {
+  width: 28px;
+  height: 1px;
+  background: #383838;
+  margin: 4px 0;
+}
+
+/* Tool Button (34x34) */
+.tool-btn {
+  width: 34px;
+  height: 34px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  transition: all 0.1s ease;
+}
+
+.tool-btn:hover {
+  background: var(--bg-tool-hover);
+  color: #ffffff;
+}
+
+.tool-btn.active {
+  background: var(--bg-tool-active);
+  border-color: #6366f1;
+  color: #818cf8;
+  box-shadow: inset 0 0 4px rgba(99, 102, 241, 0.3);
+}
+
+/* Light / White tool icon filter for dark Illustrator theme */
+.tool-icon-img {
+  width: 20px;
+  height: 20px;
+  display: block;
+  pointer-events: none;
+  filter: brightness(0) invert(0.85);
+  transition: filter 0.1s ease, transform 0.1s ease;
+}
+
+.tool-btn:hover .tool-icon-img {
+  filter: brightness(0) invert(1);
+}
+
+.tool-btn.active .tool-icon-img {
+  filter: invert(65%) sepia(85%) saturate(1400%) hue-rotate(210deg) brightness(105%) contrast(100%);
+}
+
+/* Swatches Section */
+.swatches-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding-top: 2px;
+}
+
+.active-swatch-wrap {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  cursor: pointer;
+}
+
+.swatch-box {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  border: 2px solid #555555;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+.active-swatch-wrap input[type="color"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3px;
+}
+
+.color-dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.1s ease;
+}
+
+.color-dot:hover {
+  transform: scale(1.2);
+}
+
+.color-dot.active {
+  border-color: #ffffff;
+  transform: scale(1.15);
+}
+
+/* Stroke Thickness Pills */
+.stroke-pills {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+}
+
+.stroke-opt {
+  width: 32px;
+  height: 16px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+
+.stroke-opt:hover {
+  background: var(--bg-tool-hover);
+}
+
+.stroke-opt.active {
+  background: var(--bg-tool-active);
+  border-color: #6366f1;
+  color: #818cf8;
+}
+
+.stroke-opt span {
+  background: currentColor;
+  border-radius: 50%;
+  display: block;
+}
+
+/* Instant Floating Tooltip */
+.adobe-tooltip {
+  position: fixed;
+  background: #18181b;
+  border: 1px solid #3f3f46;
+  color: #f4f4f5;
+  padding: 5px 9px;
+  border-radius: 5px;
+  font-size: 11.5px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+  z-index: 1000;
+  white-space: nowrap;
+}
+
+.tip-kbd {
+  background: #27272a;
+  border: 1px solid #3f3f46;
+  border-radius: 3px;
+  padding: 1px 4px;
+  font-size: 10px;
+  font-family: ui-monospace, monospace;
+  color: #818cf8;
+}
+
+/* ==================== Canvas & Pasteboard (Adobe Illustrator Style) ==================== */
+#canvas-scroll {
+  width: 100%;
+  height: calc(100vh - 48px);
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  position: relative;
+  background-color: var(--bg-canvas);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 24px 24px 48px 84px;
+  box-sizing: border-box;
+}
+
+#frame-scaler {
+  position: relative;
+  margin: 0 auto;
+  flex-shrink: 0;
+  transition: width 0.06s ease-out, height 0.06s ease-out;
+}
+
+/* Artboard Shadow & Styling */
+#frame-wrapper {
+  position: relative;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.65), 0 2px 8px rgba(0, 0, 0, 0.45);
+  border-radius: 2px;
+  border: none !important;
+  overflow: visible;
+  background: #ffffff;
+  transform-origin: top left;
+  transition: transform 0.06s ease-out;
+}
+
+
+#stage {
+  position: relative;
+  user-select: none;
+}
+
+#capture-img {
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+  image-rendering: auto;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Text Selection Layer (Allows drag to highlight and copy text from screenshot) */
+#text-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  user-select: text;
+  -webkit-user-select: text;
+  z-index: 5;
+}
+
+.selectable-text-token {
+  position: absolute;
+  color: transparent !important;
+  background: transparent !important;
+  user-select: text !important;
+  -webkit-user-select: text !important;
+  white-space: pre;
+  cursor: text;
+  line-height: 1;
+}
+
+.selectable-text-token::selection {
+  background: rgba(99, 102, 241, 0.45) !important;
+  color: transparent !important;
+}
+
+#draw-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: crosshair;
+  z-index: 25;
+  pointer-events: auto;
+}
+
+/* Floating Inline Text Editor Box (Illustrator Dark Style) */
+.inline-text-box {
+  position: absolute;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  background: #1e1e1e;
+  border: 2px solid #6366f1;
+  border-radius: 8px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(99, 102, 241, 0.35);
+  padding: 6px;
+  gap: 6px;
+  user-select: text !important;
+  -webkit-user-select: text !important;
+}
+
+.inline-text-input {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  outline: none;
+  resize: none;
+  line-height: 1.35;
+  padding: 4px;
+  font-family: var(--font-family);
+  user-select: text !important;
+  -webkit-user-select: text !important;
+  caret-color: #6366f1;
+  width: 100%;
+}
+
+.inline-text-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  padding-top: 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.inline-text-btn {
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.1s ease;
+  user-select: none;
+}
+
+.inline-text-btn.save-btn {
+  background: #10b981;
+  color: #ffffff;
+}
+
+.inline-text-btn.save-btn:hover {
+  background: #059669;
+}
+
+.inline-text-btn.cancel-btn {
+  background: #383838;
+  color: #d4d4d8;
+}
+
+.inline-text-btn.cancel-btn:hover {
+  background: #4b4b4b;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #18181b;
+  border: 1px solid #3f3f46;
+  color: #ffffff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+  z-index: 500;
+}
+
+/* Confirmation Modal (Dark Theme) */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 300;
+}
+
+.modal-card {
+  background: #2b2b2b;
+  border: 1px solid #444444;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  max-width: 420px;
+  width: 90%;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.7);
+  color: var(--text-primary);
+}
+
+.modal-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.modal-card p {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin-bottom: 20px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.modal-btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.12s ease;
+}
+
+.modal-btn.secondary {
+  background: #383838;
+  color: #d4d4d8;
+  border: 1px solid #4a4a4a;
+}
+
+.modal-btn.secondary:hover {
+  background: #444444;
+}
+
+.modal-btn.primary {
+  background: var(--accent-brand);
+  color: #fff;
+}
+
+.modal-btn.primary:hover {
+  background: #4f46e5;
+}
+
+.modal-btn.danger {
+  background: #ef4444;
+  color: #fff;
+}
+
+.modal-btn.danger:hover {
+  background: #dc2626;
+}
+
+.hidden {
+  display: none !important;
+}

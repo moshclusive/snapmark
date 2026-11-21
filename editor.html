@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Snapmark Studio</title>
+  <link rel="stylesheet" href="editor.css" />
+</head>
+<body class="illustrator-dark-theme">
+  <!-- Top Application Bar (Adobe Illustrator Dark Style) -->
+  <header id="topbar">
+    <div id="topbar-left">
+      <!-- App Brand -->
+      <div class="app-branding">
+        <img src="assets/Icon/icon32.png" alt="Snapmark" class="app-logo" />
+        <span class="app-title">Snapmark</span>
+      </div>
+
+      <div class="topbar-sep"></div>
+
+      <!-- Screenshot Title & Dimensions -->
+      <div class="doc-meta-box">
+        <input type="text" id="doc-title-input" value="Screenshot Capture" spellcheck="false" title="Click to rename" />
+        <span id="doc-dimensions-badge">0 × 0 px</span>
+      </div>
+    </div>
+
+    <!-- Actions Bar (Photoshop, Copy, Save Image, PDF, Print, Zoom) -->
+    <div id="topbar-right">
+
+
+      <!-- Extract Text (AI OCR) -->
+      <button id="btn-extract-text-editor" class="topbar-btn" data-tip-title="Extract Text from Image (AI OCR)" data-tip-key="OCR">
+        <svg class="btn-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="4 7 4 4 20 4 20 7"></polyline>
+          <line x1="9" y1="20" x2="15" y2="20"></line>
+          <line x1="12" y1="4" x2="12" y2="20"></line>
+        </svg>
+        <span class="btn-text">Extract Text</span>
+      </button>
+
+      <!-- Copy to Clipboard -->
+      <button id="btn-copy-clipboard" class="topbar-btn" data-tip-title="Copy Image to Clipboard" data-tip-key="Ctrl+C">
+        <svg class="btn-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+        <span class="btn-text">Copy</span>
+      </button>
+
+      <!-- Save Image Dropdown (Only PNG, JPG, PDF) -->
+      <div class="dropdown-wrapper">
+        <button id="btn-save-image" class="topbar-btn primary-btn" data-tip-title="Save Image" data-tip-key="Ctrl+S">
+          <svg class="btn-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span class="btn-text">Save Image</span>
+          <svg class="caret-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"></path></svg>
+        </button>
+        <div id="menu-save-image" class="dropdown-menu hidden">
+          <button data-format="png" class="menu-item">PNG</button>
+          <button data-format="jpg" class="menu-item">JPG</button>
+          <button data-format="pdf" class="menu-item">PDF</button>
+        </div>
+      </div>
+
+      <!-- Save PDF Button -->
+      <button id="btn-save-pdf" class="topbar-btn" data-tip-title="Export as Vector PDF" data-tip-key="Ctrl+P">
+        <svg class="btn-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+        </svg>
+        <span class="btn-text">PDF</span>
+      </button>
+
+      <!-- Print -->
+      <button id="btn-print" class="topbar-btn" data-tip-title="Print Screenshot" data-tip-key="Print">
+        <svg class="btn-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 6 2 18 2 18 9"></polyline>
+          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+          <rect x="6" y="14" width="12" height="8"></rect>
+        </svg>
+        <span class="btn-text">Print</span>
+      </button>
+
+      <div class="topbar-sep"></div>
+
+      <!-- Zoom Controls -->
+      <div class="zoom-box">
+        <button id="btn-zoom-out" class="zoom-btn" data-tip-title="Zoom Out" data-tip-key="-">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        </button>
+        <span id="zoom-label" title="Click to Reset 100%">100%</span>
+        <button id="btn-zoom-in" class="zoom-btn" data-tip-title="Zoom In" data-tip-key="+">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        </button>
+        <button id="btn-zoom-fit" class="zoom-btn" data-tip-title="Fit to Screen" data-tip-key="0">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Left Photoshop / Illustrator Style Tool Palette -->
+  <aside id="toolbar" class="adobe-toolbar">
+    <!-- Essential Drawing & Annotation Tools (Custom 48x48 SVG Icons) -->
+    <div class="tool-section">
+      <!-- 1. Brush Tool -->
+      <button class="tool-btn active" data-tool="pen" data-tip-title="Brush Tool" data-tip-key="P">
+        <img src="assets/Tools/brush.svg" class="tool-icon-img" alt="Brush" />
+      </button>
+
+      <!-- 2. Highlighter Tool -->
+      <button class="tool-btn" data-tool="highlighter" data-tip-title="Highlighter Marker" data-tip-key="H">
+        <img src="assets/Tools/highlighter.svg" class="tool-icon-img" alt="Highlighter" />
+      </button>
+
+      <!-- 3. Rectangular Tool -->
+      <button class="tool-btn" data-tool="rect-stroke" data-tip-title="Rectangle Tool" data-tip-key="R">
+        <img src="assets/Tools/rect.svg" class="tool-icon-img" alt="Rectangle" />
+      </button>
+
+      <!-- 4. Circular Tool -->
+      <button class="tool-btn" data-tool="ellipse-stroke" data-tip-title="Circular / Ellipse Tool" data-tip-key="O">
+        <img src="assets/Tools/circle.svg" class="tool-icon-img" alt="Circle" />
+      </button>
+
+      <!-- 5. Line Tool -->
+      <button class="tool-btn" data-tool="line-solid" data-tip-title="Line Tool" data-tip-key="L">
+        <img src="assets/Tools/line.svg" class="tool-icon-img" alt="Line" />
+      </button>
+
+      <!-- 6. Arrow Tool -->
+      <button class="tool-btn" data-tool="arrow-single" data-tip-title="Arrow Tool" data-tip-key="A">
+        <img src="assets/Tools/arrow.svg" class="tool-icon-img" alt="Arrow" />
+      </button>
+
+      <!-- 7. Number Badge Tool -->
+      <button class="tool-btn" data-tool="number-badge" data-tip-title="Numbered Step Marker" data-tip-key="N">
+        <img src="assets/Tools/number.svg" class="tool-icon-img" alt="Number" />
+      </button>
+
+      <!-- 8. Blur Tool -->
+      <button class="tool-btn" data-tool="blur-redact" data-tip-title="Blur / Redact" data-tip-key="B">
+        <img src="assets/Tools/blur.svg" class="tool-icon-img" alt="Blur" />
+      </button>
+
+      <!-- 9. Eraser Tool -->
+      <button class="tool-btn" data-tool="eraser" data-tip-title="Eraser Tool" data-tip-key="E">
+        <img src="assets/Tools/eraser.svg" class="tool-icon-img" alt="Eraser" />
+      </button>
+
+      <!-- 10. Delete / Clear All -->
+      <button id="btn-clear-all" class="tool-btn" data-tip-title="Delete / Clear All" data-tip-key="ESC">
+        <img src="assets/Tools/clear.svg" class="tool-icon-img" alt="Delete" />
+      </button>
+
+      <!-- 11. Undo -->
+      <button id="btn-undo" class="tool-btn" data-tip-title="Undo" data-tip-key="Ctrl+Z">
+        <img src="assets/Tools/undo.svg" class="tool-icon-img" alt="Undo" />
+      </button>
+
+      <!-- 12. Redo -->
+      <button id="btn-redo" class="tool-btn" data-tip-title="Redo" data-tip-key="Ctrl+Y">
+        <img src="assets/Tools/redo.svg" class="tool-icon-img" alt="Redo" />
+      </button>
+
+      <!-- 13. Text Tool -->
+      <button class="tool-btn" data-tool="add-text" data-tip-title="Type Tool (Write Text)" data-tip-key="T">
+        <img src="assets/Tools/text.svg" class="tool-icon-img" alt="Text" />
+      </button>
+
+      <!-- 14. Move / Selection Tool -->
+      <button class="tool-btn" data-tool="select" data-tip-title="Move / Selection Tool" data-tip-key="V">
+        <img src="assets/Tools/select.svg" class="tool-icon-img" alt="Move" />
+      </button>
+    </div>
+
+    <div class="tool-divider"></div>
+
+    <!-- Swatches & Stroke Thickness -->
+    <div class="swatches-section">
+      <!-- Main Active Swatch & Color Picker -->
+      <div class="active-swatch-wrap" data-tip-title="Color Picker" data-tip-key="Click">
+        <div id="swatch-indicator" class="swatch-box" style="background: #ef4444;"></div>
+        <input type="color" id="color-custom" value="#ef4444" />
+      </div>
+
+      <!-- Presets: Red, White, Green, Orange, Purple, lime green -->
+      <div class="palette-grid">
+        <button class="color-dot active" data-color="#ef4444" style="background:#ef4444;" title="Red"></button>
+        <button class="color-dot" data-color="#ffffff" style="background:#ffffff; border:1px solid #475569;" title="White"></button>
+        <button class="color-dot" data-color="#10b981" style="background:#10b981;" title="Green"></button>
+        <button class="color-dot" data-color="#f97316" style="background:#f97316;" title="Orange"></button>
+        <button class="color-dot" data-color="#a855f7" style="background:#a855f7;" title="Purple"></button>
+        <button class="color-dot" data-color="#84cc16" style="background:#84cc16;" title="Lime Green"></button>
+      </div>
+
+      <!-- Stroke Thickness Pills (Default 4pt) -->
+      <div class="stroke-pills">
+        <button class="stroke-opt" data-width="2" title="2pt"><span style="width:3px; height:3px;"></span></button>
+        <button class="stroke-opt active" data-width="4" title="4pt (Default)"><span style="width:5px; height:5px;"></span></button>
+        <button class="stroke-opt" data-width="8" title="8pt"><span style="width:8px; height:8px;"></span></button>
+        <button class="stroke-opt" data-width="12" title="12pt"><span style="width:11px; height:11px;"></span></button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Instant Floating Tooltip -->
+  <div id="adobe-tooltip" class="adobe-tooltip hidden">
+    <span id="tip-text" class="tip-text">Tool</span>
+    <kbd id="tip-kbd" class="tip-kbd">K</kbd>
+  </div>
+
+  <!-- Main Canvas Scroll Area (With ample left padding so toolbar never obscures screenshot) -->
+  <main id="canvas-scroll">
+    <div id="frame-scaler">
+      <div id="frame-wrapper">
+        <!-- Hidden frame container kept for compatibility -->
+        <div id="frame-bar" class="hidden"></div>
+
+        <!-- Stage & Canvas Elements (100% native resolution + text copy layer) -->
+        <div id="stage">
+          <img id="capture-img" alt="Captured screenshot" />
+          <div id="text-layer"></div>
+          <canvas id="draw-canvas"></canvas>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Notification Toast -->
+  <div id="toast" class="toast hidden"></div>
+
+  <!-- Confirmation Modal -->
+  <div id="confirm-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <h3 id="modal-title">Confirm Action</h3>
+      <p id="modal-desc">Are you sure you want to proceed?</p>
+      <div class="modal-buttons">
+        <button id="modal-cancel-btn" class="modal-btn secondary">Cancel</button>
+        <button id="modal-ok-btn" class="modal-btn danger">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="editor.js"></script>
+</body>
+</html>

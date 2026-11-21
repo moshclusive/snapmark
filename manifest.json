@@ -1,0 +1,87 @@
+{
+  "action": {
+    "default_icon": {
+      "128": "assets/Icon/icon128.png",
+      "16": "assets/Icon/icon16.png",
+      "32": "assets/Icon/icon32.png",
+      "48": "assets/Icon/icon48.png"
+    },
+    "default_popup": "popup.html",
+    "default_title": "Snapmark - Capture & Annotate"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "commands": {
+    "capture-entire-page": {
+      "description": "Capture entire webpage",
+      "suggested_key": {
+        "default": "Ctrl+Shift+E",
+        "mac": "Command+Shift+E"
+      }
+    },
+    "capture-full-pdf": {
+      "description": "Capture entire page & Save as PDF",
+      "suggested_key": {
+        "default": "Ctrl+Shift+S",
+        "mac": "Command+Shift+S"
+      }
+    },
+    "capture-selection": {
+      "description": "Capture selected area",
+      "suggested_key": {
+        "default": "Alt+Shift+4",
+        "mac": "Alt+Shift+4"
+      }
+    },
+    "capture-visible": {
+      "description": "Capture visible viewport",
+      "suggested_key": {
+        "default": "Ctrl+Shift+V",
+        "mac": "Command+Shift+V"
+      }
+    }
+  },
+  "description": "Professional screenshot capture & smart annotation studio with advanced PDF export, spotlight focus, redaction blur, and Photoshop integration.",
+  "host_permissions": [
+    "https://api.ocr.space/*",
+    "https://copytextfrompicture.xyz/*"
+  ],
+  "icons": {
+    "128": "assets/Icon/icon128.png",
+    "16": "assets/Icon/icon16.png",
+    "32": "assets/Icon/icon32.png",
+    "48": "assets/Icon/icon48.png"
+  },
+  "manifest_version": 3,
+  "name": "Snapmark - Screenshot & Annotation Studio",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "downloads",
+    "downloads.open",
+    "storage",
+    "unlimitedStorage"
+  ],
+  "version": "1.0.0",
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "resources": [
+        "assets/*",
+        "assets/Icon/*",
+        "assets/Tools/*",
+        "editor.html",
+        "editor.css",
+        "editor.js",
+        "selection.css",
+        "selection.js",
+        "ocr-modal.css",
+        "ocr-modal.js"
+      ]
+    }
+  ]
+}

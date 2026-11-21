@@ -1,6 +1,6 @@
 # Snapmark - Smart Screenshot & Annotation Studio
 
-**Snapmark** is an advanced browser extension built with Manifest V3 for full-page screenshot capture, annotation, and vector PDF export. Capture, annotation, and export run fully offline on your machine — no telemetry, no ads. The optional OCR feature sends the image to the OCR service you choose (see Privacy below).
+**Snapmark** is an advanced browser extension built with Manifest V3 for full-page screenshot capture, annotation, and vector PDF export. Capture, annotation, and export run fully offline on your machine - no telemetry, no ads. The optional OCR feature sends the image to the OCR service you choose (see Privacy below).
 
 ---
 
